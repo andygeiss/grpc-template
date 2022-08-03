@@ -5,8 +5,15 @@ import (
 )
 
 // Service ...
-type Service struct{}
+type Service struct {
+	UnimplementedGreeterServer
+}
 
-func (a *Service) SayHello(ctx context.Context, request *HelloRequest) (reply *HelloReply, err error) {
+func (a Service) SayHello(ctx context.Context, request *HelloRequest) (reply *HelloReply, err error) {
 	return &HelloReply{Message: "Hello " + request.Name}, nil
+}
+
+// NewService ...
+func NewService() *Service {
+	return &Service{}
 }

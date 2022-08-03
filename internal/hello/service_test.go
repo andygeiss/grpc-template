@@ -9,7 +9,7 @@ import (
 )
 
 func Test_Service(t *testing.T) {
-	service := hello.Service{}
+	service := hello.NewService()
 	reply, err := service.SayHello(context.Background(), &hello.HelloRequest{Name: "Foo"})
 	assert.That("error should be nil", t, err, nil)
 	assert.That("reply.Message should be Foo", t, reply.Message, "Hello Foo")
